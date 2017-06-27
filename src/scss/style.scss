@@ -1,0 +1,90 @@
+@import 'variable';
+
+*,*:before,*:after{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#container{
+  height: $content-dimension;
+  width: $content-dimension;
+  padding: 2em;
+  float: left;
+  p{
+    font-family: Arial;
+    font-size: $base-size;
+  }
+  h1{
+    font-family: Tahoma;
+    font-size: ceil($base-size*3.46);
+    color:rgba($tacao-color,$alpha);
+  }
+  h2{
+    font-family: Helvetica;
+    font-size: ceil($base-size*2.69);
+    color: $pink-color;
+  }
+  table{
+     float: left;
+     width: 1500px/$content-dimension* 100%;
+  }
+  th{
+    text-align: left;
+  }
+}
+
+%table{
+  th, td {
+		display: table-cell;
+	}
+	tr {
+		display: table-row;
+		border: none;
+		  float: none;
+    margin: 0;
+		box-shadow: none;
+
+		td {
+			padding: .75em 0 0.75em .25em;
+      float: none;
+      width: auto;
+
+			&:before {
+				padding: 0 !important;
+			}
+		}
+	}
+}
+@mixin scores {
+	@extend %table;
+  tr {
+		border-bottom: 1px solid $pink-color;
+	}
+	tr:nth-of-type(even) {
+		background:rgba($pink-color, $alpha);
+	}
+  tr:nth-of-type(odd) {
+		background:$pink-color;
+	}
+}
+@mixin other-scores {
+	@extend %table;
+  tr {
+		border-bottom: 1px solid $yellow-color;
+	}
+	tr:nth-of-type(even) {
+		background:rgba($yellow-color, $alpha);
+	}
+  tr:nth-of-type(odd) {
+		background:$yellow-color;
+	}
+}
+
+#scores{
+  @include scores;
+}
+
+#other-scores{
+  @include other-scores;
+}
